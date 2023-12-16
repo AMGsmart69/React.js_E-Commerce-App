@@ -1,26 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Header1 from "./comp/headerSection/header1";
+import Header2 from "./comp/headerSection/header2";
+import Header3 from "./comp/headerSection/header3";
 
-function App() {
+import { CssBaseline, ThemeProvider } from "@mui/material";
+import { ColorModeContext, useMode } from "./style/theme";
+
+const App = () => {
+  const [theme, colorMode] = useMode();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ColorModeContext.Provider value={colorMode}>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <Header1 />
+        <Header2 />
+        <Header3 />
+      </ThemeProvider>
+    </ColorModeContext.Provider>
   );
-}
+};
 
 export default App;
