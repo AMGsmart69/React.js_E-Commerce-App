@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 import { ExpandMore, KeyboardArrowRight } from "@mui/icons-material";
 
-const Links = ({title}) => {
+const Links = ({ title }) => {
   return (
     <Box
       sx={{
@@ -34,6 +34,7 @@ const Links = ({title}) => {
           left: "50%",
           transform: "translateX(-50%)",
           display: "none",
+          zIndex: 2,
         }}
       >
         <Paper sx={{ mt: "10px" }}>
