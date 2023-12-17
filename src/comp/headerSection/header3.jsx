@@ -1,5 +1,12 @@
 import React from "react";
-import { Box, Container, IconButton, Typography } from "@mui/material";
+import {
+  Box,
+  Container,
+  IconButton,
+  Stack,
+  Typography,
+  useMediaQuery,
+} from "@mui/material";
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
@@ -20,6 +27,7 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
+import Links from "./Links";
 
 const Header3 = () => {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -139,13 +147,22 @@ const Header3 = () => {
         </Menu>
       </Box>
 
-      <IconButton
-        sx={{ display: { xs: "block", sm: "none" } }}
-        onClick={toggleDrawer("top", true)}
-      >
-        <MenuIcon />
-      </IconButton>
+      {useMediaQuery("(min-width: 965px)") && (
+        <Stack gap={2} direction={"row"} alignItems={"center"}>
+          <Links title={"Home"} />
+          <Links title={"Mega Menu"} />
+          <Links title={"Full Screen Menu"} />
+          <Links title={"Pages"} />
+          <Links title={"User Account"} />
+          <Links title={"Vendor Account"} />
+        </Stack>
+      )}
 
+      {useMediaQuery("(max-width: 964px)") && (
+        <IconButton onClick={toggleDrawer("top", true)}>
+          <MenuIcon />
+        </IconButton>
+      )}
       <Drawer
         anchor={"top"}
         open={state["top"]}
